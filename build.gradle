@@ -1,0 +1,33 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.2.21'
+    id 'com.github.johnrengelman.shadow' version '2.0.2'
+}
+
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8'
+    compile 'org.postgresql:postgresql:42.1.4'
+    compile 'org.simpleflatmapper:sfm-jdbc:3.15.3'
+}
+
+sourceSets {
+    main.kotlin.srcDirs += 'src/kotlin'
+}
+
+mainClassName = 'MainKt'
+archivesBaseName = 'step-by-step-kotlin'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'MainKt'
+    }
+}
+
+run {
+    standardInput = System.in
+}
